@@ -20,9 +20,9 @@ This repository provides a complete pipeline for **4D fetal cardiac reconstructi
 
 ## 🧭 Pipeline Overview
 We propose a three-stage framework for 4D fetal LV analysis:
--	(A)	Radial Data Preparation: Extract 2D slices by rotating planes around the LV center.
--	(B)	SCOPE-Net Segmentation: Perform prompt-guided, symmetry-aware segmentation on radial slices.
--	(C)	Graph-Fourier Reconstruction: Reconstruct temporally consistent 3D LV meshes using GHD + DVS, enabling clinical metric estimation.
+-	**(A)**	Radial Data Preparation: Extract 2D slices by rotating planes around the LV center.
+-	**(B)**	SCOPE-Net Segmentation: Perform prompt-guided, symmetry-aware segmentation on radial slices.
+-	**(C)**	Graph-Fourier Reconstruction: Reconstruct temporally consistent 3D LV meshes using GHD + DVS, enabling clinical metric estimation.
 <p align="center">
   <img src="assets/pipeline_overview.png" alt="Pipeline Overview" width="700"/>
 </p>
@@ -32,15 +32,15 @@ We propose a three-stage framework for 4D fetal LV analysis:
 ## 🧠 SCOPE-Net: Symmetry-Aware Prompt-Guided Segmentation
 
 **SCOPE-Net is designed specifically for radial fetal ultrasound. It integrates:**
--	•	Flip-Consistent Radial Attention (FCRA) for angular symmetry modeling.
--	•	Inter-Slice Augmentation Invariance (ISAI) for self-supervised consistency.
--	•	Prompt Conditioning using bounding box or scribble inputs.
--	•	Efficient 2.5D training with 56G FLOPs per frame (vs. 79G for 3D UNet).
+-	Flip-Consistent Radial Attention (FCRA) for angular symmetry modeling.
+-	Inter-Slice Augmentation Invariance (ISAI) for self-supervised consistency.
+-	Prompt Conditioning using bounding box or scribble inputs.
+-	Efficient 2.5D training with 56G FLOPs per frame (vs. 79G for 3D UNet).
 
 **Architecture Highlights:**
--	•	U-Net backbone with symmetry-aware modules.
--	•	Optional spatial prompts injected via gating.
--	•	Robust to radial view variations and signal dropout.
+-	U-Net backbone with symmetry-aware modules.
+-	Optional spatial prompts injected via gating.
+-	Robust to radial view variations and signal dropout.
 
 <p align="center">
   <img src="assets/SCOPENet.png" alt="Pipeline Overview" width="700"/>
@@ -51,10 +51,10 @@ We propose a three-stage framework for 4D fetal LV analysis:
 ## 📂 FeEcho4D Dataset
 
 **FeEcho4D is the first public dataset for 4D radial fetal echocardiography.**
--	•	🧪 52 subjects, 1,845 annotated 3D volumes, 3M+ annotated 2D slices
--	•	🌀 37 radial views per volume, full 4D coverage
--	•	🎯 Annotation at ED & ES, with motion-tracked intermediate frames
--	•	✅ Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
+-	🧪 52 subjects, 1,845 annotated 3D volumes, 3M+ annotated 2D slices
+-	🌀 37 radial views per volume, full 4D coverage
+-	🎯 Annotation at ED & ES, with motion-tracked intermediate frames
+- ✅ Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
 
 **📎 Access the dataset and tools:**
 👉 [**FeEcho4D**](https://github.com/kamruleee51/FeEcho4D/FeEcho4D-Dataset)
