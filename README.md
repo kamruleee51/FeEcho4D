@@ -77,9 +77,10 @@ xxx
 ```bash
 xxx
 ```
+
 ---
 
-##⚕️ Clinical Evaluation & Results
+## ⚕️ Clinical Evaluation & Results
 
 <p align="center">
   <img src="assets/PointCloud.png" alt="Pipeline Overview" width="700"/>
