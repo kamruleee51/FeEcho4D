@@ -3,8 +3,7 @@
 **Official repository for:**  
 **4D Reconstruction of Fetal Left Ventricle from Echocardiography via 2.5D Radial Segmentation and Graph-Fourier Reconstruction**  
 Md. Kamrul Hasan†, Qifeng Wang†, Haziq Shahard, Lucas Iijima, Nida Ruseckaite, Iris Scharnreitner, Andreas Tulzer, Bin Liu‡, Guang Yang‡, Choon Hwai Yap‡  
- 👏 [[Wecome to Qifeng's Github]](https://github.com/QifengWang0702)
- 👏 [[Wecome to Haziq's Github]](https://github.com/haziqshahard)
+
 ---
 
 ## 📌 Overview
@@ -112,3 +111,12 @@ If you find this work helpful, please cite:
   doi={XXX}
 }
 ```
+---
+## 🙏 Acknowledgements
+
+-We thank all co-authors for their contributions to this work, particularly in model development, dataset construction, and clinical validation. 
+-Special thanks to Kepler University Hospital for their support in data acquisition and expert annotations.
+-And to Imperial College London and Dalian University of Technology for providing research infrastructure and technical guidance.
+ 👏 [[Wecome to Qifeng's Github]](https://github.com/QifengWang0702)
+ 👏 [[Wecome to Haziq's Github]](https://github.com/haziqshahard)
+ 👏 [[Wecome to Yihao's Github]](https://github.com/Luo-Yihao)
