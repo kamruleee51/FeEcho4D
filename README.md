@@ -20,14 +20,15 @@ This repository provides a complete pipeline for **4D fetal cardiac reconstructi
 
 ## 🧭 Pipeline Overview
 We propose a three-stage framework for 4D fetal LV analysis:
-	1.	Radial Data Preparation: Extract 2D slices by rotating planes around the LV center.
-	2.	SCOPE-Net Segmentation: Perform prompt-guided, symmetry-aware segmentation on radial slices.
-	3.	Graph-Fourier Reconstruction: Reconstruct temporally consistent 3D LV meshes using GHD + DVS, enabling clinical metric estimation.
+	(A)	Radial Data Preparation: Extract 2D slices by rotating planes around the LV center.
+	(B)	SCOPE-Net Segmentation: Perform prompt-guided, symmetry-aware segmentation on radial slices.
+	(C)	Graph-Fourier Reconstruction: Reconstruct temporally consistent 3D LV meshes using GHD + DVS, enabling clinical metric estimation.
 <p align="center">
   <img src="assets/pipeline_overview.png" alt="Pipeline Overview" width="700"/>
 </p>
 
 ---
+
 ## 🧠 SCOPE-Net: Symmetry-Aware Prompt-Guided Segmentation
 
 SCOPE-Net is designed specifically for radial fetal ultrasound. It integrates:
@@ -46,10 +47,11 @@ Architecture Highlights:
 </p>
 
 ---
+
 ## 📂 FeEcho4D Dataset
 
 FeEcho4D is the first public dataset for 4D radial fetal echocardiography.
-	•	🧪 52 subjects, 1,845 annotated 3D volumes
+	•	🧪 52 subjects, 1,845 annotated 3D volumes, 3M+ annotated 2D slices
 	•	🌀 37 radial views per volume, full 4D coverage
 	•	🎯 Annotation at ED & ES, with motion-tracked intermediate frames
 	•	✅ Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
@@ -58,14 +60,38 @@ FeEcho4D is the first public dataset for 4D radial fetal echocardiography.
 👉 [**FeEcho4D**](https://github.com/kamruleee51/FeEcho4D/FeEcho4D-Dataset)
 
 ---
+
+## 🚀 Getting Started
+
+1. Install Dependencies
+```bash
+git clone https://github.com/kamruleee51/FeEcho4D.git
+cd FeEcho4D
+pip install -r requirements.txt
+```
+2.xxx
+```bash
+xxx
+```
+3.xxx
+```bash
+xxx
+```
+---
+
 ## ⚕️ Clinical Evaluation & Results
+
 <p align="center">
   <img src="assets/PointCloud.png" alt="Pipeline Overview" width="700"/>
 </p>
+🔍 Experiment: We compare point clouds between predicted and ground-truth meshes in both short-axis views and 3D perspectives on FeEcho4D and MITEA, using SCOPE-Net vs. UNet.
+✅ Summary: SCOPE-Net shows superior spatial alignment, especially at the apex and lateral wall, indicating better segmentation consistency and reconstruction quality.
 
 <p align="center">
   <img src="assets/Clincal.png" alt="Pipeline Overview" width="700"/>
 </p>
+🔍 Experiment: On the MITEA dataset, we evaluate clinical metrics (EF, GLS) predicted by SCOPE-Net+GHD, UNet+GHD, and 3D UNet, reporting Pearson r, MSE, and 95% confidence intervals.
+✅ Summary: Our method achieves the highest accuracy and lowest variance, demonstrating strong potential for reliable clinical use in fetal cardiac analysis.
 
 ---
 ## 📈 Citation
