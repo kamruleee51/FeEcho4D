@@ -94,7 +94,7 @@ Step 2: Advanced Execution via Python Script
 python ghd_fit.py \
     --data_root data_example \
     --cases FeEcho4D_017 \
-    --times time001-time010 \
+    --times time001-010 \
     --device cuda:0 \
     --mesh_out meshes_out \
     --myo_idx 2
