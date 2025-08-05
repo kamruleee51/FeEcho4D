@@ -78,12 +78,19 @@ xxx
 ```
 4.Part(C) 3D Mesh Reconstruction
 
-To run parametric mesh fitting with GHD on fetal cardiac masks:
+To perform parametric 3D mesh fitting using GHD on fetal cardiac masks, follow the two-step process:
+
+Step 1: Quickstart via Jupyter Notebook
 ```bash
 # Step into the Part(C)GHD folder (if not already there)
 cd /path/to/Part(C)GHD
 
-# Option 1: Run via Python script (standalone execution)
+# Launch the notebook for interactive fitting
+jupyter notebook ghd_fit_quickstart.ipynb
+```
+Step 2: Advanced Execution via Python Script
+```bash
+# Explore ghd_fit.py for full parameter control and customization
 python ghd_fit.py \
     --data_root data_example \
     --cases FeEcho4D_017 \
@@ -91,11 +98,6 @@ python ghd_fit.py \
     --device cuda:0 \
     --mesh_out meshes_out \
     --myo_idx 2
-```
-This will generate fitted 3D meshes for the selected case and frame.
-```bash
-# Option 2: Run inside the Jupyter notebook for iterative development
-jupyter notebook ghd_fit_quickstart.ipynb
 ```
 
 ---
