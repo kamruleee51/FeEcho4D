@@ -21,7 +21,7 @@ This repository provides a complete pipeline for **4D fetal cardiac reconstructi
 We propose a three-stage framework for 4D fetal LV analysis:
 -	**(A)**	Radial Data Preparation: Extract 2D slices by rotating planes around the LV center.
 -	**(B)**	SCOPE-Net Segmentation: Perform prompt-guided, symmetry-aware segmentation on radial slices.
--	**(C)**	Graph-Fourier Reconstruction: Reconstruct temporally consistent 3D LV meshes using GHD + DVS, enabling clinical metric estimation.
+-	**(C)**	3D Mesh Reconstruction: Reconstruct temporally consistent 3D LV meshes using GHD + DVS, enabling clinical metric estimation.
 <p align="center">
   <img src="assets/pipeline_overview.png" alt="Pipeline Overview" width="888"/>
 </p>
@@ -68,13 +68,34 @@ git clone https://github.com/kamruleee51/FeEcho4D.git
 cd FeEcho4D
 pip install -r requirements.txt
 ```
-2.xxx
+2. Part(A) Radial Data Preparation
 ```bash
 xxx
 ```
-3.xxx
+3.Part(B) SCOPE-Net Segmentation
 ```bash
 xxx
+```
+4.Part(C) 3D Mesh Reconstruction
+
+To run parametric mesh fitting with GHD on fetal cardiac masks:
+```bash
+# Step into the Part(C)GHD folder (if not already there)
+cd /path/to/Part(C)GHD
+
+# Option 1: Run via Python script (standalone execution)
+python ghd_fit.py \
+    --data_root data_example \
+    --cases FeEcho4D_017 \
+    --times time001-time010 \
+    --device cuda:0 \
+    --mesh_out meshes_out \
+    --myo_idx 2
+```
+This will generate fitted 3D meshes for the selected case and frame.
+```bash
+# Option 2: Run inside the Jupyter notebook for iterative development
+jupyter notebook ghd_fit_quickstart.ipynb
 ```
 
 ---
