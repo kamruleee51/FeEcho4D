@@ -27,6 +27,32 @@ We propose a three-stage framework for 4D fetal LV analysis:
 </p>
 
 ---
+## Radial Slice Construction from 4D Echocardiography (TMI-aligned)
+
+Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), this script:
+
+1. **Selects** an axial reference plane index \( Z_m \) (user-chosen slice index in depth \( D' \)).
+2. **Uses** anisotropic voxel spacing \([s_x, s_y, s_z]\) from `scale.txt`.
+3. **Builds** a regular 3D meshgrid \( X \) over the rotated volume at each time \( t \).
+4. **Recenters** coordinates to the selected LV center \([C_x, C_y]\) (in pixels) and \( Z_m \).
+5. **Applies** uniform angular sampling \( \theta \in [0, \pi] \) at \(5^\circ\) increments  
+   → \( S = 37 \) slices: \( \theta = \pi \cdot s / (S-1), \ s = 0, \ldots, S{-}1 \).
+6. **Rotates** coordinates via \( R_y(\theta) \) and maps back to the original frame.
+7. **Interpolates** cubic 3D values at transformed coordinates to obtain \( V^t_\theta \).
+8. **Extracts** the axial slice at \( Z_m \) from \( V^t_\theta \) ⇒ \( I^t_\theta \in \mathbb{R}^{H \times W} \).
+9. **Stacks** all angles to form \( V^t_\theta \in \mathbb{R}^{S \times H \times W} \);  
+   over \( t \), \( V_\theta \in \mathbb{R}^{T \times S \times H \times W} \).
+
+---
+
+### Notes on Code-to-Math Mapping
+- `spacing_values = [s_x, s_y, s_z]` → read from `scale.txt`
+- `lv_center = [C_x, C_y]` → LV center in pixels (rotated & cropped frame)
+- `lv_start_end_frame` → acts as \( Z_m \) (axial slice index)
+- Angular loop `0:5:180` → produces \( S = 37 \) slices, including 0° and 180°
+- Rotation axis = **y** → consistent with \( R_y(\theta) \) in the paper
+
+---
 
 ## 🧠 SCOPE-Net: Symmetry-Aware Prompt-Guided Segmentation
 
