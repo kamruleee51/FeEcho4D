@@ -147,7 +147,7 @@ for t_idx = 1:num_time_frames
     % Load volume V^t ∈ R^{H' × W' × D'}
     raw_t = read(VideoReader(fullfile(video_dir, 'video', sprintf('time%d.avi', t_idx))));
     raw_t = reshape(raw_t(:,:,1,:), [size(raw_t,1), size(raw_t,2), size(raw_t,4)]);
-    % raw_t = medfilt3(raw_t, [5 5 5], 'symmetric');
+    raw_t = medfilt3(raw_t, [5 5 5], 'symmetric');
 
     % Output directory for this t
     time_folder = fullfile(video_dir, sprintf('time%03d', t_idx));
