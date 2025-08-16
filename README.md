@@ -27,7 +27,7 @@ We propose a three-stage framework for 4D fetal LV analysis:
 </p>
 
 ---
-## Radial Slice Construction from 4D Echocardiography (TMI-aligned)
+## Radial Slice Construction from 4D Echocardiography
 
 Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), this script:
 
