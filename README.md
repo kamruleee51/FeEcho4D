@@ -97,8 +97,8 @@ Given a sequence of 3D segmentation volumes, the pipeline reconstructs a continu
 3.	Load voxel-wise segmentation masks (binary myocardium/ventricle) and anisotropic voxel spacing.
 4.	Voxelize & Sample: obtain point clouds from the mask boundary at each time `t`.
 5.	Fit: deform the template mesh `M_0` to match sampled boundary points using a GHD energy function combining a data term and Laplacian regularizers.
-- •	Data term: enforces point-to-surface alignment
-- •	Regularizers: maintain mesh smoothness and shape consistency
+-   Data term: enforces point-to-surface alignment
+-   Regularizers: maintain mesh smoothness and shape consistency
 6.	Optimize coefficients in harmonic space (low-dimensional basis) for efficient deformation.
 7.	Iterate over all time frames to produce smooth temporal mesh sequence `{M_t}`.
 8.	Output reconstructed meshes in `.obj` format under each case directory.
