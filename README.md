@@ -29,7 +29,7 @@ We propose a three-stage framework for 4D fetal LV analysis:
 </p>
 
 ---
-## Radial Slice Construction from 4D Echocardiography
+## (A) Radial Slice Construction from 4D Echocardiography
 
 Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), this script:
 
@@ -56,7 +56,18 @@ Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), th
 
 ---
 
-## 🧠 SCOPE-Net: Symmetry-Aware Prompt-Guided Segmentation
+### Uniform Mask Processing
+This step refines raw binary masks into anatomically consistent shapes:
+1.	Largest component extraction
+2.	Skeletonization + tail extrapolation
+3.	Dilation by estimated half-thickness
+4.	Optional smoothing via binary opening
+
+Detailed implementation and visualization (overlay & GIFs) are provided in (A)Volume-to-Slice `Mask_Uniformization.ipynb`
+
+---
+
+## (B) SCOPE-Net: Symmetry-Aware Prompt-Guided Segmentation
 
 **SCOPE-Net is designed specifically for radial fetal ultrasound. It integrates:**
 -	Flip-Consistent Radial Attention (FCRA) for angular symmetry modeling.
@@ -88,7 +99,7 @@ Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), th
 
 ---
 
-## (3) GHD-based 3D Mesh Reconstruction
+## (C) GHD-based 3D Mesh Reconstruction
 
 Given a sequence of 3D segmentation volumes, the pipeline reconstructs a continuous left-ventricle (LV) mesh by Graph Harmonic Deformation (GHD):
 
@@ -105,8 +116,8 @@ Given a sequence of 3D segmentation volumes, the pipeline reconstructs a continu
 
 Step 1: Quickstart via Jupyter Notebook
 ```bash
-# Step into the Part(C)GHD folder (if not already there)
-cd /path/to/Part(C)GHD
+# Step into the (C)Slice-to-Mesh folder
+cd /path/to/(C)Slice-to-Mesh
 
 # Launch the notebook for interactive fitting
 jupyter notebook ghd_fit_quickstart.ipynb
