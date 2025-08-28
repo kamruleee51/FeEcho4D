@@ -92,8 +92,8 @@ Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), th
 
 Given a sequence of 3D segmentation volumes V \in \mathbb{R}^{T \times H \times W \times D}, the pipeline reconstructs a continuous left-ventricle (LV) mesh by Graph Harmonic Deformation (GHD):
 
-1.	Initialize a canonical template mesh M_0 (e.g., a sphere or averaged LV shape).
-2.	Embed vertices \{v_i\}_{i=1}^N into a graph structure with Laplacian basis functions.
+1.	Initialize a canonical template mesh `M_0` (e.g., a sphere or averaged LV shape).
+2.	Embed vertices `\{v_i\}_{i=1}^N` into a graph structure with Laplacian basis functions.
 3.	Load voxel-wise segmentation masks (binary myocardium/ventricle) and anisotropic voxel spacing.
 4.	Voxelize & Sample: obtain point clouds from the mask boundary at each time t.
 5.	Fit: deform the template mesh M_0 to match sampled boundary points using GHD energy:
