@@ -15,7 +15,7 @@ stride      = 4        # Step between windows (== window_size → non-overlappin
 # ======================
 # Optimization schedule
 # ======================
-num_epochs = 50        # Total training epochs
+num_epochs = 100       # Total training epochs
 LR         = 1e-4      # Initial learning rate (Adam)
 
 # ======================
