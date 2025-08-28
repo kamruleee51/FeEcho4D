@@ -92,21 +92,16 @@ Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), th
 
 Given a sequence of 3D segmentation volumes, the pipeline reconstructs a continuous left-ventricle (LV) mesh by Graph Harmonic Deformation (GHD):
 
-1. **Initialize** a canonical template mesh `M_0` (e.g., a sphere or averaged LV shape).  
-2. **Embed** vertices `{v_i}` into a graph structure with Laplacian basis functions.  
-3. **Load** voxel-wise segmentation masks (binary myocardium/ventricle) and anisotropic voxel spacing.  
-4. **Voxelize & Sample:** obtain point clouds from the mask boundary at each time `t`.  
-5. **Fit:** deform the template mesh `M_0` to match sampled boundary points using the GHD energy:
-
-<img alt="GHD energy"
-     src="https://latex.codecogs.com/svg.image?E%3DE_%7B%5Ctext%7Bdata%7D%7D%2B%5Clambda_%7B%5Ctext%7Bcot%7D%7DE_%7B%5Ctext%7Bcotlap%7D%7D%2B%5Clambda_%7B%5Ctext%7Bdis%7D%7DE_%7B%5Ctext%7Bdislap%7D%7D%2B%5Clambda_%7B%5Ctext%7Bstd%7D%7DE_%7B%5Ctext%7Bstdlap%7D%7D" />
-
-- \(E_{\text{data}}\): point-to-surface alignment (data term)  
-- \(E_{\text{cotlap}}, E_{\text{dislap}}, E_{\text{stdlap}}\): Laplacian regularizers  
-
-6. **Optimize** coefficients in harmonic space (low-dimensional basis) for efficient deformation.  
-7. **Iterate** over all time frames to produce smooth temporal mesh sequence `{M_t}`.  
-8. **Output** reconstructed meshes in `.obj` format under each case directory.
+1.	Initialize a canonical template mesh M_0 (e.g., a sphere or averaged LV shape).
+2.	Embed vertices {v_i} into a graph structure with Laplacian basis functions.
+3.	Load voxel-wise segmentation masks (binary myocardium/ventricle) and anisotropic voxel spacing.
+4.	Voxelize & Sample: obtain point clouds from the mask boundary at each time t.
+5.	Fit: deform the template mesh M_0 to match sampled boundary points using a GHD energy function combining a data term and Laplacian regularizers.
+	•	Data term: enforces point-to-surface alignment
+	•	Regularizers: maintain mesh smoothness and shape consistency
+6.	Optimize coefficients in harmonic space (low-dimensional basis) for efficient deformation.
+7.	Iterate over all time frames to produce smooth temporal mesh sequence {M_t}.
+8.	Output reconstructed meshes in .obj format under each case directory.
 
 Step 1: Quickstart via Jupyter Notebook
 ```bash
@@ -128,6 +123,7 @@ python ghd_fit.py \
     --myo_idx 2
 ```
 More details can be found in the [GHDHeart](https://github.com/Luo-Yihao/GHDHeart) project.
+
 ---
 
 ## ⚕️ Clinical Evaluation & Results
