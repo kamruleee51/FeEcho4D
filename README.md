@@ -8,7 +8,7 @@ Md. Kamrul Hasan†, Qifeng Wang†, Haziq Shahard, Lucas Iijima, Nida Ruseckait
 
 ---
 
-## 📌 Overview
+## Overview
 
 This repository provides a complete pipeline for **4D fetal cardiac reconstruction** from echocardiography. Our pipeline introduces:
 
@@ -19,7 +19,7 @@ This repository provides a complete pipeline for **4D fetal cardiac reconstructi
 
 ---
 
-## 🧭 Pipeline Overview
+## Pipeline Overview
 We propose a three-stage framework for 4D fetal LV analysis:
 -	**(A)**	Radial Data Preparation: Extract 2D slices by rotating planes around the LV center.
 -	**(B)**	SCOPE-Net Segmentation: Perform prompt-guided, symmetry-aware segmentation on radial slices.
@@ -125,20 +125,20 @@ More details can be found in the [GHDHeart](https://github.com/Luo-Yihao/GHDHear
 
 ---
 
-## 📂 FeEcho4D Dataset
+## FeEcho4D Dataset
 
 **FeEcho4D is the first public dataset for 4D radial fetal echocardiography.**
--	🧪 52 subjects, 1,845 annotated 3D volumes, 3M+ annotated 2D slices
--	🌀 37 radial views per volume, full 4D coverage
--	🎯 Manual annotation across the full cardiac cycle, including both ED and ES frames
-- ✅ Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
+-	 52 subjects, 1.8k annotated 3D volumes, 68k annotated 2D slices
+-	 37 radial views per volume, full 4D coverage
+-	 Manual annotation across the full cardiac cycle, including both ED and ES frames
+-  Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
 
-**📎 Access the dataset and tools:**
+** Access the dataset and tools:**
 👉 [**FeEcho4D**](https://feecho4d.github.io/Website/)
 
 ---
 
-## ⚕️ Clinical Evaluation & Results
+## Clinical Evaluation & Results
 
 <p align="center">
   <img src="assets/PointCloud.png" alt="Pipeline Overview" width="888"/>
@@ -155,7 +155,7 @@ More details can be found in the [GHDHeart](https://github.com/Luo-Yihao/GHDHear
 **✅ Summary:** Our method achieves the highest accuracy and lowest variance, demonstrating strong potential for reliable clinical use in fetal cardiac analysis.
 
 ---
-## 📈 Citation
+## Citation
 
 If you find this work helpful, please cite:
 
