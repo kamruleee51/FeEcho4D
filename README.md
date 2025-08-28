@@ -88,9 +88,9 @@ Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), th
 
 ---
 
-## GHD-based 3D Mesh Reconstruction
+## (3) GHD-based 3D Mesh Reconstruction
 
-Given a sequence of 3D segmentation volumes \( V \in \mathbb{R}^{T \times H \times W \times D} \), the pipeline reconstructs a continuous left-ventricle (LV) mesh by **Graph Harmonic Deformation (GHD):**
+Given a sequence of 3D segmentation volumes, the pipeline reconstructs a continuous left-ventricle (LV) mesh by Graph Harmonic Deformation (GHD):
 
 1. **Initialize** a canonical template mesh `M_0` (e.g., a sphere or averaged LV shape).  
 2. **Embed** vertices `{v_i}` into a graph structure with Laplacian basis functions.  
@@ -127,7 +127,7 @@ python ghd_fit.py \
     --mesh_out meshes_out \
     --myo_idx 2
 ```
-
+More details can be found in the [GHDHeart](https://github.com/Luo-Yihao/GHDHeart) project.
 ---
 
 ## ⚕️ Clinical Evaluation & Results
