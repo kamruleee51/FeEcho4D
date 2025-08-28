@@ -29,6 +29,7 @@ We propose a three-stage framework for 4D fetal LV analysis:
 </p>
 
 ---
+
 ## (A) Radial Slice Construction from 4D Echocardiography
 
 Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), this script:
@@ -63,7 +64,7 @@ This step refines raw binary masks into anatomically consistent shapes:
 3.	Dilation by estimated half-thickness
 4.	Optional smoothing via binary opening
 
-Detailed implementation and visualization (overlay & GIFs) are provided in (A)Volume-to-Slice `Mask_Uniformization.ipynb`
+Detailed implementation and visualization (overlay & GIFs) are provided in folder (1)Volume-to-Slice `Mask_Uniformization.ipynb`
 
 ---
 
@@ -86,19 +87,6 @@ Detailed implementation and visualization (overlay & GIFs) are provided in (A)Vo
 
 ---
 
-## 📂 FeEcho4D Dataset
-
-**FeEcho4D is the first public dataset for 4D radial fetal echocardiography.**
--	🧪 52 subjects, 1,845 annotated 3D volumes, 3M+ annotated 2D slices
--	🌀 37 radial views per volume, full 4D coverage
--	🎯 Manual annotation across the full cardiac cycle, including both ED and ES frames
-- ✅ Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
-
-**📎 Access the dataset and tools:**
-👉 [**FeEcho4D**](https://feecho4d.github.io/Website/)
-
----
-
 ## (C) GHD-based 3D Mesh Reconstruction
 
 Given a sequence of 3D segmentation volumes, the pipeline reconstructs a continuous left-ventricle (LV) mesh by Graph Harmonic Deformation (GHD):
@@ -116,8 +104,8 @@ Given a sequence of 3D segmentation volumes, the pipeline reconstructs a continu
 
 Step 1: Quickstart via Jupyter Notebook
 ```bash
-# Step into the (C)Slice-to-Mesh folder
-cd /path/to/(C)Slice-to-Mesh
+# Step into the (3)Slice-to-Mesh folder
+cd /path/to/(3)Slice-to-Mesh
 
 # Launch the notebook for interactive fitting
 jupyter notebook ghd_fit_quickstart.ipynb
@@ -134,6 +122,19 @@ python ghd_fit.py \
     --myo_idx 2
 ```
 More details can be found in the [GHDHeart](https://github.com/Luo-Yihao/GHDHeart) project.
+
+---
+
+## 📂 FeEcho4D Dataset
+
+**FeEcho4D is the first public dataset for 4D radial fetal echocardiography.**
+-	🧪 52 subjects, 1,845 annotated 3D volumes, 3M+ annotated 2D slices
+-	🌀 37 radial views per volume, full 4D coverage
+-	🎯 Manual annotation across the full cardiac cycle, including both ED and ES frames
+- ✅ Clinical metrics: EF, GLS, GCS, EDV, ESV, SV
+
+**📎 Access the dataset and tools:**
+👉 [**FeEcho4D**](https://feecho4d.github.io/Website/)
 
 ---
 
