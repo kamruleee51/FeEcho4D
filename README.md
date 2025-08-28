@@ -88,23 +88,21 @@ Given a 4D sequence \( V \in \mathbb{R}^{T \times H' \times W' \times D'} \), th
 
 ---
 
-## 🚀 Getting Started
+## GHD-based 3D Mesh Reconstruction
 
-1. Install Dependencies
-```bash
-git clone https://github.com/kamruleee51/FeEcho4D.git
-cd FeEcho4D
-pip install -r requirements.txt
-```
-2. Part(A) Radial Data Preparation
-```bash
-xxx
-```
-3.Part(B) SCOPE-Net Segmentation
-```bash
-xxx
-```
-4.Part(C) 3D Mesh Reconstruction
+Given a sequence of 3D segmentation volumes V \in \mathbb{R}^{T \times H \times W \times D}, the pipeline reconstructs a continuous left-ventricle (LV) mesh by Graph Harmonic Deformation (GHD):
+
+1.	Initialize a canonical template mesh M_0 (e.g., a sphere or averaged LV shape).
+2.	Embed vertices \{v_i\}_{i=1}^N into a graph structure with Laplacian basis functions.
+3.	Load voxel-wise segmentation masks (binary myocardium/ventricle) and anisotropic voxel spacing.
+4.	Voxelize & Sample: obtain point clouds from the mask boundary at each time t.
+5.	Fit: deform the template mesh M_0 to match sampled boundary points using GHD energy:
+E = E_{\text{data}} + \lambda_{\text{cot}} E_{\text{cotlap}} + \lambda_{\text{dis}} E_{\text{dislap}} + \lambda_{\text{std}} E_{\text{stdlap}}
+	•	E_{\text{data}}: point-to-surface alignment (data term)
+	•	E_{\text{cotlap}}, E_{\text{dislap}}, E_{\text{stdlap}}: Laplacian regularizers
+6.	Optimize coefficients in harmonic space (low-dimensional basis) for efficient deformation.
+7.	Iterate over all time frames to produce smooth temporal mesh sequence \{M_t\}_{t=1}^T.
+8.	Output reconstructed meshes in .obj format under each case directory.
 
 To perform parametric 3D mesh fitting using GHD on fetal cardiac masks, follow the two-step process:
 
