@@ -11,7 +11,7 @@ Md. Kamrul Hasan, Qifeng Wang, Haziq Shahard, Lucas Iijima, Nida Ruseckaite, Yih
 ## Overview
 This repository provides a complete pipeline for **4D fetal cardiac reconstruction** from echocardiography, using a three-stage framework for left ventricular (LV) analysis:
 
-- **FeEcho4D** – Radial data preparation: extract 2D slices by rotating planes around the LV center (Block A in the figure)  
+- **FeEcho4D** – Radial data preparation: extract 2D slices by rotating planes around the LV center (Block A)  
 - **SCOPE-Net** – Geometry-aware segmentation: prompt-guided, symmetry-consistent segmentation on radial slices (Block B)  
 - **Graph-Fourier Mesh Reconstruction** – High-fidelity 3D reconstruction: generate temporally consistent LV meshes from sparse radial slices using GHD + DVS, enabling clinical metric estimation (Block C)  
 
