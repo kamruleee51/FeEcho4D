@@ -4,33 +4,17 @@
 ## 4D Reconstruction of Fetal Left Ventricle from Echocardiography via 2.5D Radial Segmentation and Graph-Fourier Reconstruction  
 ## FeEcho4D: The First Benchmark 4D Fetal Echocardiography Dataset with 4D Left Ventricular Meshes
 **Authors:**  
-Md. Kamrul Hasan, Qifeng Wang, Haziq Shahard, Lucas Iijima, Nida Ruseckaite, Iris Scharnreitner, Andreas Tulzer, Bin Liu, Guang Yang, Choon Hwai Yap  
+Md. Kamrul Hasan, Qifeng Wang, Haziq Shahard, Lucas Iijima, Nida Ruseckaite, Yihao Luo, Iris Scharnreitner, Andreas Tulzer, Bin Liu, Guang Yang, Choon Hwai Yap  
 
 ---
-
-
-
-
-
-
-
 
 ## Overview
+This repository provides a complete pipeline for **4D fetal cardiac reconstruction** from echocardiography, using a three-stage framework for left ventricular (LV) analysis:
 
-This repository provides a complete pipeline for **4D fetal cardiac reconstruction** from echocardiography. Our pipeline introduces:
+- **FeEcho4D** – Radial data preparation: extract 2D slices by rotating planes around the LV center (Block A in the figure)  
+- **SCOPE-Net** – Geometry-aware segmentation: prompt-guided, symmetry-consistent segmentation on radial slices (Block B)  
+- **Graph-Fourier Mesh Reconstruction** – High-fidelity 3D reconstruction: generate temporally consistent LV meshes from sparse radial slices using GHD + DVS, enabling clinical metric estimation (Block C)  
 
-- **FeEcho4D**: The first benchmark dataset for radial fetal echocardiography.
-- **SCOPE-Net**: A novel geometry-aware segmentation network.
-- **Graph-Fourier Mesh Reconstruction**: High-fidelity reconstruction from sparse radial slices.
-- **Clinical Evaluation**: Ejection Fraction (EF), Global Longitudinal/Circumferential Strain (GLS/GCS).
-
----
-
-## Pipeline Overview
-We propose a three-stage framework for 4D fetal LV analysis:
--	**(A)**	Radial Data Preparation: Extract 2D slices by rotating planes around the LV center.
--	**(B)**	SCOPE-Net Segmentation: Perform prompt-guided, symmetry-aware segmentation on radial slices.
--	**(C)**	3D Mesh Reconstruction: Reconstruct temporally consistent 3D LV meshes using GHD + DVS, enabling clinical metric estimation.
 <p align="center">
   <img src="assets/pipeline_overview.png" alt="Pipeline Overview" width="888"/>
 </p>
