@@ -23,7 +23,7 @@ This repository provides a complete pipeline for **4D fetal cardiac reconstructi
 
 ## 📦(A) FeEcho4D Dataset Preparation: Radial Slicing to 4D Mesh Reconstruction
 
-A detailed description of dataset preparation is available on our dataset website 👉 [**FeEcho4D**](https://feecho4d.github.io/Website/). This section documents the code used for data preparation. Implementation details and visualizations (overlay images & GIFs) are provided in folder: **`(1) Volume-to-Slice`**
+A detailed description of dataset preparation is available on our dataset website 👉 [**FeEcho4D**](https://feecho4d.github.io/Website/). This section documents the code used for data preparation. Implementation details and visualizations (overlay images & GIFs) are provided in the folder: **`(1)Volume-to-Slice`**
 
 
 #### Radial Slicing
@@ -44,22 +44,20 @@ This step refines raw binary masks into anatomically consistent shapes:
 
 ---
 
-## (B) SCOPE-Net: Symmetry-Aware Prompt-Guided Segmentation
-
-**SCOPE-Net is designed specifically for radial fetal ultrasound. It integrates:**
--	Flip-Consistent Radial Attention (FCRA) for angular symmetry modeling.
--	Inter-Slice Augmentation Invariance (ISAI) for self-supervised consistency.
--	Prompt Conditioning using bounding box or scribble inputs.
--	Efficient 2.5D training with 56G FLOPs per frame (vs. 79G for 3D UNet).
-
-**Architecture Highlights:**
--	U-Net backbone with symmetry-aware modules.
--	Optional spatial prompts injected via gating.
--	Robust to radial view variations and signal dropout.
+## 📦 (B) SCOPE-Net: Symmetry-Consistent Prompt-Enhanced Network
+SCOPE-Net is a geometry-adaptive network that explicitly encodes angular symmetry as an inductive prior, unlike fully data-driven deep networks, and integrates spatial prompts through gated modulation of encoder features. 
 
 <p align="center">
   <img src="assets/SCOPENet.png" alt="Pipeline Overview" width="888"/>
 </p>
+
+### 🧠 SCOPE-Net Features
+- **Flip-Consistent Radial Attention (FCRA)** – models angular symmetry in radial views  
+- **Geometry-Aware Self-Supervision** – enforces representation-level consistency via an **Inter-Slice Augmentation Invariance (ISAI)** objective; enables label-free self-distillation and improves feature robustness under strong augmentations  
+- **Prompt Conditioning** – supports bounding box or scribble inputs  
+- **Efficient 2.5D Training** – 56G FLOPs per frame (vs. 79G for 3D networks)
+ 
+**Implementation** – see **`(2)DL_Segmentation`** folder for full code details  
 
 ---
 
