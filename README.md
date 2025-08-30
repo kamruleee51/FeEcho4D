@@ -120,6 +120,27 @@ Comparison of SAX, LAX, and Radial slicing (followed by GHD fit) vs. direct 3D v
 - **Superior 3D reconstruction quality** – Radial views outperform SAX, LAX, and volumetric segmentation for both networks, with statistically significant differences (*p* < 0.05, t-test) in most comparisons.  
 - **Anatomical fidelity & robustness** – Higher reconstruction accuracy is attributed to better 2D segmentations and the shape constraints inherent in radial slicing.  
 - **Efficiency gains** – 3D reconstruction from sparse 2D radial slices requires fewer FLOPs per frame than direct 3D volumetric segmentation, improving computational efficiency.
+
+
+Comparison of SAM, UNet, and **SCOPE-Net** on our **FeEcho4D** dataset and the public **MITEA** dataset. SCOPE-Net consistently outperforms baselines in both fetal and adult datasets (*p* < 0.05 for most metrics).
+
+| Dataset | Method | HD95 MYO ↓ | HD95 ENDO ↓ | HD95 EPI ↓ | DSC ↑ | MASD ↓ | PIA (%) ↓ |
+|---------|--------|------------|-------------|------------|-------|--------|-----------|
+| **FeEcho4D** | SAM | 8.08 ± 3.06 | 6.06 ± 2.97 | 5.24 ± 2.97 | 0.881 ± 0.040 | 4.71 ± 1.92 | 0.0258 ± 0.2171 |
+|           | UNet | 13.09 ± 10.26 | 10.08 ± 9.33 | 9.31 ± 9.36 | 0.838 ± 0.140 | 6.01 ± 3.20 | 1.39 ± 4.61 |
+|           | **SCOPE-Net** | **7.46 ± 3.31** | **5.40 ± 3.13** | **4.83 ± 3.14** | **0.893 ± 0.044** | **4.29 ± 1.71** | **0.0036 ± 0.0917** |
+| **MITEA** | SAM | 6.49 ± 2.20 | 4.63 ± 3.44 | 3.00 ± 2.47 | 0.917 ± 0.033 | 1.82 ± 0.67 | 0.0499 ± 0.0602 |
+|           | UNet | 7.30 ± 3.55 | 5.57 ± 6.17 | 4.20 ± 4.58 | 0.908 ± 0.034 | 2.08 ± 0.99 | 0.7486 ± 2.35 |
+|           | **SCOPE-Net** | **5.92 ± 2.37** | **3.96 ± 2.48** | **2.48 ± 1.95** | **0.921 ± 0.033** | **1.54 ± 0.37** | **4.5e-4 ± 1.6e-2** |
+> ✅ **FLOPs/Frame**: 63 G for SAM, 51 G for 2D UNet, 56 G for SCOPE-Net.
+
+- **Consistent superiority** – SCOPE-Net significantly outperforms UNet and SAM on FeEcho4D and MITEA across all subregions and metrics (HD95, MASD, DSC, PIA), with *p* < 0.05 in most cases.  
+- **Boundary & overlap gains** – Produces sharper, anatomically faithful segmentations, particularly in challenging regions (LV apex, lateral wall) due to radial-aware symmetry modeling.  
+- **Ablation findings** –  
+  - **FCRA**: Reduces false positives, enforces single-connected myocardial contours.  
+  - **ISAI-driven SISD**: Improves cross-angular view consistency, enhancing PIA.  
+  - **Prompt-guided modulation**: Steers segmentation toward clinically plausible shapes, improving downstream 3D reconstruction via GHD.  
+- **Generalization** – Structured integration of anatomical priors improves robustness under motion artifacts and acoustic dropout.  
   
 
 **🔍 Experiment:** We compare point clouds between predicted and ground-truth meshes in both short-axis views and 3D perspectives on FeEcho4D and MITEA, using SCOPE-Net vs. UNet.
