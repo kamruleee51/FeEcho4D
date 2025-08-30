@@ -143,6 +143,8 @@ Comparison of SAM, UNet, and **SCOPE-Net** on our **FeEcho4D** dataset and the p
   - **ISAI-driven SISD**: Improves cross-angular view consistency, enhancing PIA.  
   - **Prompt-guided modulation**: Steers segmentation toward clinically plausible shapes, improving downstream 3D reconstruction via GHD.  
 - **Generalization** – Structured integration of anatomical priors improves robustness under motion artifacts and acoustic dropout.  
+
+---
   
 ### 📊 Results: Biomarker Estimation
 
