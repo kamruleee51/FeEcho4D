@@ -149,22 +149,23 @@ Comparison of SAM, UNet, and **SCOPE-Net** on our **FeEcho4D** dataset and the p
 We estimate **Ejection Fraction (EF)** and **Global Longitudinal Strain (GLS)** as clinical biomarkers  
 ([calculation details 👉 **FeEcho4D**](https://feecho4d.github.io/Website/)). Ablation experiments compare three approaches:
 
-1. **2D segmentation** → Simpson’s 1/3 rule (clinical standard)  
-2. **Volumetric segmentation**  
-3. **Radial segmentation** → GHD-based 3D reconstruction  
+(a) **2D segmentation** → Simpson’s 1/3 rule (clinical standard)  
+(b) **Volumetric 3D segmentation**  
+(c) **Radial segmentation** → GHD-based 3D reconstruction  
 
 <p align="center">
   <img src="assets/Biomarker.png" alt="Biomarker" width="888"/>
 </p>
 
-### 📌 Key Findings: Ejection Fraction (EF) Estimation
+### 📌 Key Findings: EF Estimation
 
-- **Limitations of 2D Simpson’s method** – In amyloidosis cases, 2D-based EF produced implausible results (including negative EF) due to asymmetric wall thickening and underestimation of EDV from shape assumptions.
-- **3D mesh advantage** – GHD-based 3D reconstruction accurately quantified ventricular volumes and improved EF precision across the cohort, even in complex morphologies.
 - **Correlation with ground truth** –  
-  - **SCOPE-Net + GHD**: EF correlation = **0.888**  
-  - Radial UNet + GHD: 0.218  
-  - Volumetric UNet3D: 0.731
+  - **SCOPE-Net + GHD**: **0.888**  
+  - 2D segmentation+Simpson’s: 0.644  
+  - Volumetric 3D segmentation: 0.731
+
+- **Limitations of 2D segmentation+Simpson’s method** – In amyloidosis cases, 2D-based EF produced implausible results (including negative EF) due to asymmetric wall thickening and underestimation of EDV from shape assumptions.
+- **3D mesh advantage** – GHD-based 3D reconstruction accurately quantified ventricular volumes and improved EF precision across the cohort, even in complex morphologies.
 - **Why SCOPE-Net works better** – Symmetry-aware anatomical priors yield contiguous, topologically valid MYO contours, reducing PIA and enabling dense, coherent meshes.
 - **Robust functional estimation** – High-quality meshes preserve spatial integrity across time, supporting accurate EF calculation even in artifact-prone or anatomically ambiguous cases.
 
