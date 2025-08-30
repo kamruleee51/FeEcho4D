@@ -21,23 +21,26 @@ This repository provides a complete pipeline for **4D fetal cardiac reconstructi
 
 ---
 
-## (A) FeEcho4D Dataset Preparation: Radial Slicing to 4D Mesh Reconstruction
+## 📦(A) FeEcho4D Dataset Preparation: Radial Slicing to 4D Mesh Reconstruction
 
-A detailed description of dataset preparation is available on our dataset website 👉 [**FeEcho4D**](https://feecho4d.github.io/Website/). This section covers the code implementation for data preparation.
+A detailed description of dataset preparation is available on our dataset website 👉 [**FeEcho4D**](https://feecho4d.github.io/Website/). This section documents the code used for data preparation. Implementation details and visualizations (overlay images & GIFs) are provided in folder: **`(1) Volume-to-Slice`**
+
+
+#### Radial Slicing
 
 <p align="center">
   <img src="assets/FeEcho4D.png" alt="Radial Slicing" width="888"/>
 </p>
 
 
-### Uniform Mask Processing
+#### Uniform Mask Processing
 This step refines raw binary masks into anatomically consistent shapes:
 1.	Largest component extraction
 2.	Skeletonization + tail extrapolation
 3.	Dilation by estimated half-thickness
 4.	Optional smoothing via binary opening
 
-Detailed implementation and visualization (overlay & GIFs) are provided in folder (1) Volume-to-Slice `Mask_Uniformization.ipynb`
+
 
 ---
 
