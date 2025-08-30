@@ -144,16 +144,30 @@ Comparison of SAM, UNet, and **SCOPE-Net** on our **FeEcho4D** dataset and the p
   - **Prompt-guided modulation**: Steers segmentation toward clinically plausible shapes, improving downstream 3D reconstruction via GHD.  
 - **Generalization** – Structured integration of anatomical priors improves robustness under motion artifacts and acoustic dropout.  
   
+### 📊 Results: Biomarker Estimation
 
-**🔍 Experiment:** We compare point clouds between predicted and ground-truth meshes in both short-axis views and 3D perspectives on FeEcho4D and MITEA, using SCOPE-Net vs. UNet.
-**✅ Summary:** SCOPE-Net shows superior spatial alignment, especially at the apex and lateral wall, indicating better segmentation consistency and reconstruction quality.
+We estimate **Ejection Fraction (EF)** and **Global Longitudinal Strain (GLS)** as clinical biomarkers  
+([calculation details 👉 **FeEcho4D**](https://feecho4d.github.io/Website/)). Ablation experiments compare three approaches:
+
+1. **2D segmentation** → Simpson’s 1/3 rule (clinical standard)  
+2. **Volumetric segmentation**  
+3. **Radial segmentation** → GHD-based 3D reconstruction  
 
 <p align="center">
-  <img src="assets/Clincal.png" alt="Pipeline Overview" width="888"/>
+  <img src="assets/Biomarker.png" alt="Biomarker" width="888"/>
 </p>
 
-**🔍 Experiment:** On the MITEA dataset, we evaluate clinical metrics (EF, GLS) predicted by SCOPE-Net+GHD, UNet+GHD, and 3D UNet, reporting Pearson r, MSE, and 95% confidence intervals.
-**✅ Summary:** Our method achieves the highest accuracy and lowest variance, demonstrating strong potential for reliable clinical use in fetal cardiac analysis.
+### 📌 Key Findings: Ejection Fraction (EF) Estimation
+
+- **Limitations of 2D Simpson’s method** – In amyloidosis cases, 2D-based EF produced implausible results (including negative EF) due to asymmetric wall thickening and underestimation of EDV from shape assumptions.
+- **3D mesh advantage** – GHD-based 3D reconstruction accurately quantified ventricular volumes and improved EF precision across the cohort, even in complex morphologies.
+- **Correlation with ground truth** –  
+  - **SCOPE-Net + GHD**: EF correlation = **0.888**  
+  - Radial UNet + GHD: 0.218  
+  - Volumetric UNet3D: 0.731
+- **Why SCOPE-Net works better** – Symmetry-aware anatomical priors yield contiguous, topologically valid MYO contours, reducing PIA and enabling dense, coherent meshes.
+- **Robust functional estimation** – High-quality meshes preserve spatial integrity across time, supporting accurate EF calculation even in artifact-prone or anatomically ambiguous cases.
+
 
 ---
 ## Citation
