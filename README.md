@@ -74,7 +74,9 @@ Given a sequence of 3D segmentation volumes, the pipeline reconstructs a continu
    - **Regularizers** – maintain mesh smoothness and shape consistency  
 6. **Optimize** deformation coefficients in harmonic space (low-dimensional basis) for efficiency  
 7. **Iterate** over all time frames to produce a smooth temporal mesh sequence `{M_t}`  
-8. **Export** reconstructed meshes as `.obj` files under each case directory  
+8. **Export** reconstructed meshes as `.obj` files under each case directory
+
+**Implementation** – see **`(3)Slice-to-Mesh`** folder for full code details  
 
 **Step 1: Quickstart via Jupyter Notebook**
 ```bash
